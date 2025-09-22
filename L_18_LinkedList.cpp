@@ -91,7 +91,18 @@ int middleelement2(){
     cout<<p->info<<endl;
     return 0;
 }
-
+void reverse(){
+    struct node* prev, *curr, *next;
+    prev = NULL;
+    curr = start;
+    while(curr!=NULL){
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    start = prev;
+}
 int main(){
     start = NULL;
     insert_beg('A');
@@ -103,6 +114,9 @@ int main(){
     traverse();
     cout<<count_nodes()<<endl;
     middleelement();
+    middleelement2();
+    reverse();
+    traverse();
 
     
     return 0;
