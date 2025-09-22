@@ -80,6 +80,17 @@ int middleelement(){
         return 0;
     }
 }
+int middleelement2(){
+    struct node* p;
+    int c = count_nodes();
+    int mid = c/2;
+    p = start;
+    for(int i=0;i<mid;i++){
+        p = p->next;
+    }
+    cout<<p->info<<endl;
+    return 0;
+}
 
 int main(){
     start = NULL;
