@@ -103,6 +103,27 @@ void reverse(){
     }
     start = prev;
 }
+void orderedinsert(char x){
+    struct node* p, *q, *r;
+    p = getnode(x);
+    if(start==NULL){
+        start = p;
+    }
+    else if(x < start->info){
+        p->next = start;
+        start = p;
+    }
+    else{
+        q = start;
+        r = NULL;
+        while(q!=NULL && q->info < x){
+            r = q;
+            q = q->next;
+        }
+        r->next = p;
+        p->next = q;
+    }
+}
 int main(){
     start = NULL;
     insert_beg('A');
@@ -116,6 +137,10 @@ int main(){
     middleelement();
     middleelement2();
     reverse();
+    traverse();
+    orderedinsert('C');
+    orderedinsert('F');
+    orderedinsert('A');
     traverse();
 
     
