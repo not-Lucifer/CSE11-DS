@@ -43,6 +43,8 @@ int main() {
     Traverse(START);
     deletebeg(&START);
     Traverse(START);
+    ordered_instertion(&START, 'E');
+    Traverse(START);
 
 
     return 0;
