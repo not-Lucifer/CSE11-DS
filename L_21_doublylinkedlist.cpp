@@ -64,6 +64,18 @@ int count_nodes(){
     }
     return c;
 }
+void insert_after(node* q, char x){
+    struct node* p, *r;
+    p = getnode(x);
+    r = q->next;
+    q->next = p;
+    p->prev = q;
+    p->next = r;
+    if(r!=NULL){
+        r->prev = p;
+    }
+}
+
 
 
 int main(){
@@ -73,6 +85,9 @@ int main(){
     insert_beg('C');
     traverse();
     insert_end('D');
+    traverse();
+    cout<<count_nodes()<<endl;
+    insert_after(start->next,'E');
     traverse();
     cout<<count_nodes()<<endl;
     
