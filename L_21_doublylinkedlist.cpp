@@ -90,7 +90,5 @@ int main(){
     insert_after(start->next,'E');
     traverse();
     cout<<count_nodes()<<endl;
-    
-    
     return 0;
 }
