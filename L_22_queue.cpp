@@ -1,55 +1,69 @@
 #include<bits/stdc++.h>
 using namespace std;
-struct queue1{
-    int size;
-    int front;
-    int rear;
-    int *Q;
+#define MAXQUEUE 10
+struct Queue {
+    char items[MAXQUEUE];
+    int FRONT, REAR;
 };
-queue1 *q;
-void initialize(queue1 *q,int size){
-    q->size=size;
-    q->front=q->rear=0;
-    q->Q=new int[size];
+struct Queue q;
+
+void initialize() {
+    q.FRONT = -1;
+    q.REAR = -1;
 }
 
-bool isempty(queue1 *q){
-    return q->front==q->rear;
+bool isempty() {
+    if (q.REAR == -1)
+        return true;
+    else
+        return false;
+}
+void Enqueue(char element) {
+    if (q.REAR == MAXQUEUE - 1)
+        cout << "Queue is full" << endl;
+    else {
+        if (q.FRONT == -1)
+            q.FRONT = 0;
+        q.REAR++;
+        q.items[q.REAR] = element;
+        cout << "Inserted " << element << endl;
+    }
 }
 
-int enqueue(queue1 *q,int x){
-    if((q->rear+1)%q->size==q->front){
-        cout<<"Queue is full"<<endl;
+void Dequeue() {
+    char element;
+    if (isempty()) {
+        cout << "Queue is empty" << endl;
+    } else {
+        element = q.items[q.FRONT];
+        q.FRONT++;
+        if (q.FRONT > q.REAR) {
+            cout << "Deleted " << element << endl;
+            initialize();
+        }
+        cout << "Deleted " << element << endl;
     }
-    else{
-        q->rear=(q->rear+1)%q->size;
-        q->Q[q->rear]=x;
-    }
-    return 0;
 }
 
-int dequeue(queue1 *q){
-    int x=-1;
-    if(isempty(q)){
-        cout<<"Queue is empty"<<endl;
-    }
-    else{
-        q->front=(q->front+1)%q->size;
-        x=q->Q[q->front];
-    }
-    return x;
-}
 
 
 int main(){
-    q=new queue1;
-    initialize(q,5);
-    enqueue(q,10);
-    enqueue(q,20);
-    enqueue(q,30);
-    enqueue(q,40);
-    enqueue(q,50);
-    cout<<dequeue(q)<<endl;
+    initialize();
+    Dequeue();
+    Enqueue('A');
+    Enqueue('B');
+    Enqueue('C');
+    Enqueue('D');
+    Enqueue('E');
+    Enqueue('F');
+
+    Dequeue();
+    Dequeue();
+
+    Enqueue('G');
+    Enqueue('H');
+    Enqueue('I');
+
     
     return 0;
 }
