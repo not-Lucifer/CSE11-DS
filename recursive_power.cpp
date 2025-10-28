@@ -4,12 +4,12 @@ int power(int a,int n){
     if(n==0)
         return 1;
     else{
+        int x=power(a,n/2);
         if(n%2==0){
-            int half=power(a,n/2);
-            return half*half;
+            return x*x;
         }
         else
-            return a*power(a,n-1);
+            return x*x*a ;
     }
 }
 
