@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-int binarysearch(int arr[], int n, int x) {
+int binarysearch(vector<int> arr, int n, int x) {
     int left = 0, right = n - 1;
     while (left <= right) {
         int mid = left + (right - left) / 2;
@@ -24,7 +24,7 @@ int main(){
         cin >> arr[i];
     }
     cin >> x;
-    int result = binarysearch(arr.data(), n, x);
+    int result = binarysearch(arr, n, x);
     cout<<result<<endl;    
     return 0;
 }
